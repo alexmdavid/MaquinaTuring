@@ -5,8 +5,10 @@ class TuringMachineSimulator:
         self.root = root
         self.root.title("Máquina de Turing Simulada")
 
-        self.cinta = ["0", "1", "0", "1", "0", "1", "0"]
+        self.cinta = [" "," "," "," ","0", "1", "0", "1", "0", "1", "0"," "," "," "," "]
         self.head_position = 0
+
+
 
         self.frame_cinta = tk.Frame(root)
         self.frame_cinta.pack()
@@ -19,7 +21,16 @@ class TuringMachineSimulator:
         self.label_head.place(x=445, y=38)  # Posición inicial de la cabeza
 
         self.step_delay = 1000  # Intervalo de tiempo en milisegundos
+        self.position_head_sycronized()
         self.auto_step()
+
+    def position_head_sycronized(self):
+        for i in range(len(self.cinta)):
+            if self.cinta [i] != " ":
+                self.head_position = i
+                break
+                
+
 
     def auto_step(self):
         current_symbol = self.cinta[self.head_position]
@@ -27,8 +38,10 @@ class TuringMachineSimulator:
             self.cinta[self.head_position] = '1'
             self.head_position += 1
         else:
-            self.cinta[self.head_position] = '0'
-            self.head_position += 1
+            if current_symbol == '1':
+                self.cinta[self.head_position] = '0'
+                self.head_position += 1
+
 
         # Actualiza el texto en las celdas
         for i in range(len(self.cinta)):
@@ -42,6 +55,10 @@ class TuringMachineSimulator:
 
 if __name__ == "__main__":
     root = tk.Tk()
-    root.geometry("1200x1800")
+    # Establecemos el tamaño mínimo
+    root.minsize(1200, 600)
+
+    # Establecemos el tamaño máximo
+    root.maxsize(1200, 600)
     app = TuringMachineSimulator(root)
     root.mainloop()
