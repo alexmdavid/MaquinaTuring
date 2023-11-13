@@ -1,0 +1,97 @@
+.window{
+    display:flex ;
+    width: 100vw;
+}
+
+
+.mainWindow{
+    display: flex;
+    justify-content: space-around;
+    width: 750px;
+    height: 550px;
+    margin-left: 200px ;
+}
+
+
+
+.cell_dinamy{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 54px;
+    align-self: self-end;
+    overflow: auto; /* Añadido para permitir el desplazamiento horizontal */
+    max-width: 750px; /* Ancho máximo del contenedor */
+    overflow: hidden; /* Oculta la barra de desplazamiento */
+}
+
+.index{
+    position: absolute;
+    align-self: flex-end;
+    border: 4px solid yellow;
+    min-width: 47px;
+    height: 48px;
+    opacity: 60%;
+}
+
+.cells1{
+    border: 1px solid black;
+    border-left: none;
+    border-right: none;
+    width: 50px;
+    height: 44px;
+}
+
+.cells, .cellsB,.cellsStar,.cell2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    stroke: black;
+    stroke-width: 0.5;
+    pointer-events: none;
+    text-anchor: middle;
+    font-family: "Source Code Pro", "Consolas", "Menlo", "DejaVu Sans Mono", "Courier", monospace;
+    font-size: 25px;
+    border: 1px solid black;
+    border-right: none;
+    width: 50px;
+    min-width: 50px;
+    height: 44px;
+    text-align: center;
+}
+
+
+.secondWindow{
+    display: flex;
+    position: absolute;
+    flex-direction:column;
+    gap: 10px;
+    right: 8%;
+    top: 11%;
+    border: 1px solid black;
+    width: 282px;
+    height: 244px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#caracterInput{
+    margin: 0px 20px 0px 20px;
+}
+
+.writeCells{
+    width: 104px;
+    height: 32px;
+    border: 1px solid green;
+    border-radius: 6px;
+    background-color: aquamarine;
+}
+
+.button{
+    width: 104px;
+    height: 32px;
+    background: none;
+    border: none;
+}
