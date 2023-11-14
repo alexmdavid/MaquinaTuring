@@ -42,7 +42,7 @@
     height: 44px;
 }
 
-.cells, .cellsB,.cellsStar,.cell2{
+.cells, .cellsB{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -60,6 +60,21 @@
     text-align: center;
 }
 
+
+.writeCells{
+    width: 104px;
+    height: 32px;
+    border: 1px solid green;
+    border-radius: 6px;
+    background-color: aquamarine;
+}
+
+.button{
+    width: 104px;
+    height: 32px;
+    background: none;
+    border: none;
+}
 
 .secondWindow{
     display: flex;
@@ -79,19 +94,4 @@
 
 #caracterInput{
     margin: 0px 20px 0px 20px;
-}
-
-.writeCells{
-    width: 104px;
-    height: 32px;
-    border: 1px solid green;
-    border-radius: 6px;
-    background-color: aquamarine;
-}
-
-.button{
-    width: 104px;
-    height: 32px;
-    background: none;
-    border: none;
 }
