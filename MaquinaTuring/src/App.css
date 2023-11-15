@@ -162,14 +162,21 @@
 #button_phrase {
   border-radius: 10px;
   cursor: pointer;
-  background-color: #00ff1e77;
-  color: black;
+  background-color: rgb(151, 236, 22);
+  color: rgb(48, 84, 48);
   font-size: 15px;
   padding: 10px 20px;
   border: none;
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+
+#button_phrase:disabled,
+#button_phrase:disabled:hover {
+  background-color: #00ff1e77;
+  color: black;
+  transform: none;
 }
 
 #button_phrase:hover {

@@ -4,6 +4,7 @@ const Input = forwardRef((props, ref) => {
   const [inputValue, setInputValue] = useState('');
   const inputRef = useRef(null)
   const characterList = useRef([]);
+  const [isWordValid, setIsWordValid] = useState(false);
 
 
   useEffect(() => {
@@ -14,21 +15,27 @@ const Input = forwardRef((props, ref) => {
     }
   }, [ref]);
 
-  const handleChange = (event) => {
-    const newValue = event.target.value;
+  const [errorMessage, setErrorMessage] = useState('');
+  // Utilizar una expresión regular para aceptar solo 'a' y 'b'
+  const pattern_word = /^[ab]+$/;
 
-    // Utilizar una expresión regular para aceptar solo 'a' y 'b'
-    const filteredValue = newValue.replace(/[^ab]/g, '');
+  const handleChange = (event) => {
+
+    const value = event.target.value;
+    setIsWordValid(pattern_word.test(value));
 
     // Mostrar alerta si se ingresó un caracter no permitido
-    if (newValue !== filteredValue) {
-      alert('Solo se permiten los caracteres "a" y "b".');
+    if (value.trim() === '') {
+      setErrorName('this field is required');
+    } else if(!isWordValid) {
+      setErrorName('this word is not valid');
+    } else {
+      setErrorMessage('');
     }
 
-    setInputValue(filteredValue);
   };
 
-  function handleClick() {
+  const handleClick = () => {
     const inputValue = inputRef.current.value;
 
     // Guardar cada caracter en el arreglo
@@ -45,7 +52,9 @@ const Input = forwardRef((props, ref) => {
 
   return (
     <div className="box_phrase">
-      <label id="label_phrase" style={{ fontWeight: 'bold' }} htmlFor="input_phrase">
+      <label id="label_phrase"
+        style={{ fontWeight: 'bold' }}
+        htmlFor="input_phrase">
         Ingresa una palabra:
       </label>
       <br />
@@ -55,8 +64,16 @@ const Input = forwardRef((props, ref) => {
         placeholder="Write here"
         ref={inputRef}
         onChange={handleChange}
+        //onKeyDown={handleClick}
+        //disabled={!isWordValid}
       />
-      <button type="submit" id="button_phrase" onClick={handleClick} >
+
+      {errorMessage && (<p>{errorMessage}<br/><br/></p>)}
+
+      <button type="submit"
+        id="button_phrase"
+        onClick={handleClick} 
+        disabled={!isWordValid}>
         Verificar
       </button>
     </div>
