@@ -1,6 +1,6 @@
-import React, { useRef,forwardRef, useEffect,useState } from 'react';
+import React, { useRef, forwardRef, useEffect, useState } from 'react';
 
-const Input = forwardRef((props, ref)=> {
+const Input = forwardRef((props, ref) => {
   const [inputValue, setInputValue] = useState('');
   const inputRef = useRef(null)
   const characterList = useRef([]);
@@ -28,7 +28,7 @@ const Input = forwardRef((props, ref)=> {
     setInputValue(filteredValue);
   };
 
-  function handleClick(){
+  function handleClick() {
     const inputValue = inputRef.current.value;
 
     // Guardar cada caracter en el arreglo
@@ -41,27 +41,24 @@ const Input = forwardRef((props, ref)=> {
   }
 
 
-  
 
 
   return (
     <div className="box_phrase">
-      <form>
-        <label id="label_phrase" style={{ fontWeight: 'bold' }} htmlFor="input_phrase">
-          Ingresa una palabra:
-        </label>
-        <br />
-        <input
-          type="text"
-          id="input_phrase"
-          placeholder="Write here"
-          ref={inputRef}
-          onChange={handleChange}
-        />
-        <button type="submit" id="button_phrase" onClick={handleClick} >
-          Verificar
-        </button>
-      </form>
+      <label id="label_phrase" style={{ fontWeight: 'bold' }} htmlFor="input_phrase">
+        Ingresa una palabra:
+      </label>
+      <br />
+      <input
+        type="text"
+        id="input_phrase"
+        placeholder="Write here"
+        ref={inputRef}
+        onChange={handleChange}
+      />
+      <button type="submit" id="button_phrase" onClick={handleClick} >
+        Verificar
+      </button>
     </div>
   );
 });

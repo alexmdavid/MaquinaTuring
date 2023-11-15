@@ -3,14 +3,11 @@ import React, { forwardRef, useRef, useImperativeHandle } from 'react';
 const Tape = forwardRef((props, ref) => {
 
     const tapeRef = useRef(null);
-    let contador = useRef(0);
 
     // Utiliza useImperativeHandle para exponer específicamente la referencia que deseas
     useImperativeHandle(ref, () => ({
         miInputRef: tapeRef,
         agregarDiv: (contenido) => {
-
-
             // Encuentra el hijo con la clase 'cells'
             const cellsChild = tapeRef.current.querySelector('.cells');
 
@@ -21,7 +18,6 @@ const Tape = forwardRef((props, ref) => {
                 nuevoDiv.textContent = contenido;
                 tapeRef.current.insertBefore(nuevoDiv, cellsChild.nextSibling);
             }
-
 
         },
     }));
