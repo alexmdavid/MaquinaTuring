@@ -1,4 +1,5 @@
 import React, { useRef, forwardRef, useEffect, useState } from 'react';
+import enviarPalabraAlServidor from './SendWords';
 
 const Input = forwardRef(({ updateWord }, ref) => {
 
@@ -66,6 +67,7 @@ const Input = forwardRef(({ updateWord }, ref) => {
     if (isWordValid) {
       const charArray = inputValue.split(''); 
       updateWord(charArray); 
+      enviarPalabraAlServidor(inputValue);
     }
 
   }
