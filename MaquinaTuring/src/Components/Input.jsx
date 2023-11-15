@@ -3,7 +3,7 @@ import enviarPalabraAlServidor from './SendWords';
 
 const Input = forwardRef(({ updateWord }, ref) => {
 
-  const [lleno,setState] = useState(false);
+  const [lleno, setState] = useState(false);
 
   // Código del componente Input
 
@@ -29,7 +29,7 @@ const Input = forwardRef(({ updateWord }, ref) => {
     // Mostrar alerta si se ingresó un caracter no permitido
     if (value.trim() === '') {
       setErrorMessage('this field is required');
-    } else if(!isWordValid) {
+    } else if (!isWordValid) {
       setErrorMessage('this word is not valid');
     } else {
       setErrorMessage('');
@@ -45,14 +45,14 @@ const Input = forwardRef(({ updateWord }, ref) => {
     characterList.current = characters;
 
     if (ref.current) {
-      
-      if(!lleno){
+
+      if (!lleno) {
         characterList.current.forEach(item => {
           ref.current.addCell(item);
           setState(true);
           console.log(item)
         });
-      }else{
+      } else {
         console.log(lleno)
         setState(false);
         ref.current.deleteCells();
@@ -62,18 +62,21 @@ const Input = forwardRef(({ updateWord }, ref) => {
           console.log(item)
         });
       }
+
+      setTimeout(() => {
+        ref.current.replaceWithA();
+      }, 2000);
     }
 
     if (isWordValid) {
-      const charArray = inputValue.split(''); 
-      updateWord(charArray); 
-      enviarPalabraAlServidor(inputValue);
+      const charArray = inputValue.split('');
+      updateWord(charArray);
     }
 
   }
 
   const handleKeyDown = (event) => {
-    if(event.key === 'Enter' && isWordValid) {
+    if (event.key === 'Enter' && isWordValid) {
       handleClick();
     }
   }
@@ -86,7 +89,7 @@ const Input = forwardRef(({ updateWord }, ref) => {
         htmlFor="input_phrase">
         Ingresa una palabra:
       </label>
-      {errorMessage && (<p style={{color: 'red'}}>{errorMessage}</p>)}
+      {errorMessage && (<p style={{ color: 'red' }}>{errorMessage}</p>)}
       <input
         type="text"
         id="input_phrase"
@@ -98,7 +101,7 @@ const Input = forwardRef(({ updateWord }, ref) => {
 
       <button type="submit"
         id="button_phrase"
-        onClick={handleClick} 
+        onClick={handleClick}
         disabled={!isWordValid}>
         Verificar
       </button>
