@@ -43,6 +43,7 @@ const Input = forwardRef(({ updateWord }, ref) => {
     if (ref.current) {
       characterList.current.forEach(item => {
         ref.current.agregarDiv(item);
+        console.log(item)
       });
     }
 
