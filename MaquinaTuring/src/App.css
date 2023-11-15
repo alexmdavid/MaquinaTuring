@@ -90,7 +90,6 @@
   font-size: 20;
   resize: none;  
   padding: 10px;
-  margin: 15px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 10px;
@@ -105,25 +104,6 @@
   border: 1px solid green;
   border: 1px solid wheat;
 }
-
-#title_automaton {
-  font-size: 30px;
-  font-weight: bold;
-  margin-left: 0; /* Alinea el título a la izquierda */
-  margin-bottom: 20px;
-}
-
-/* Estilos del contenedor del gráfico de autómata */
-#box_automaton {
-  display: flex;
-  width: 90%; /* Ocupa todo el ancho disponible */
-  height: 40vh;
-  margin: 0 auto;
-  border: 6px double #878585;
-  background-color: #f0f0f0;
-  border-radius: 20px;
-}
-
 
 /* Estilos del cuadro de expresión regular */
 .box_phrase {
@@ -177,6 +157,7 @@
   background-color: #00ff1e77;
   color: black;
   transform: none;
+  pointer-events: none;
 }
 
 #button_phrase:hover {
@@ -185,13 +166,23 @@
   transform: scale(1.1);
 }
 
-#languageSelector,
-#input_run_time,
-#words_area,
-#box_automaton,
-#input_phrase,
-#button_phrase {
-  box-shadow: 0px 0px 20px rgba(200, 200, 200, 0.189);
+
+/* Estilos del contenedor del gráfico de autómata */
+#title_automaton {
+  font-size: 30px;
+  font-weight: bold;
+  margin-left: 0; /* Alinea el título a la izquierda */
+  margin-bottom: 20px;
+}
+
+#box_automaton {
+  display: flex;
+  width: 90%; /* Ocupa todo el ancho disponible */
+  height: 35vh;
+  margin: 0 auto;
+  border: 6px double #878585;
+  background-color: #f0f0f0;
+  border-radius: 20px;
 }
 
 /* Estilos de la cinta  */
@@ -240,6 +231,16 @@
   min-width: 47px;
   height: 48px;
   opacity: 60%;
+}
+
+
+#languageSelector,
+#input_run_time,
+#words_area,
+#box_automaton,
+#input_phrase,
+#button_phrase {
+  box-shadow: 0px 0px 20px rgba(200, 200, 200, 0.189);
 }
 
 /* fin */

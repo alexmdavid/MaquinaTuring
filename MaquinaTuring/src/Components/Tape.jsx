@@ -1,6 +1,6 @@
 import React, { forwardRef, useRef, useImperativeHandle } from 'react';
 
-const Tape = forwardRef((props, ref) => {
+const Tape = forwardRef(({word}, ref) => {
 
     const tapeRef = useRef(null);
 
