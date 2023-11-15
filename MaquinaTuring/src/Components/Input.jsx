@@ -1,11 +1,13 @@
 import React, { useRef, forwardRef, useEffect, useState } from 'react';
 
-const Input = forwardRef((props, ref) => {
-  const [inputValue, setInputValue] = useState('');
+const Input = forwardRef(({ updateWord }, ref) => {
+  // Código del componente Input
+
   const inputRef = useRef(null)
   const characterList = useRef([]);
   const [isWordValid, setIsWordValid] = useState(false);
-
+  const [errorMessage, setErrorMessage] = useState('');
+  const pattern_word = /^[ab]+$/;
 
   useEffect(() => {
     // Accede a la referencia de la cinta (miInputRef) y realiza operaciones si es necesario
@@ -14,10 +16,6 @@ const Input = forwardRef((props, ref) => {
       // Puedes realizar otras operaciones aquí
     }
   }, [ref]);
-
-  const [errorMessage, setErrorMessage] = useState('');
-  // Utilizar una expresión regular para aceptar solo 'a' y 'b'
-  const pattern_word = /^[ab]+$/;
 
   const handleChange = (event) => {
 
@@ -42,13 +40,24 @@ const Input = forwardRef((props, ref) => {
     const characters = inputValue.split('');
     characterList.current = characters;
 
-    characterList.current.forEach(item => {
-      ref.current.agregarDiv(item);
-      ref.current.moveRight();
-    });
+    if (ref.current) {
+      characterList.current.forEach(item => {
+        ref.current.agregarDiv(item);
+      });
+    }
+
+    if (isWordValid) {
+      const charArray = inputValue.split(''); 
+      updateWord(charArray); 
+    }
+
   }
 
-
+  const handleKeyDown = (event) => {
+    if(event.key === 'Enter' && isWordValid) {
+      handleClick();
+    }
+  }
 
 
   return (
@@ -58,18 +67,15 @@ const Input = forwardRef((props, ref) => {
         htmlFor="input_phrase">
         Ingresa una palabra:
       </label>
-      <br />
+      {errorMessage && (<p style={{color: 'red'}}>{errorMessage}</p>)}
       <input
         type="text"
         id="input_phrase"
         placeholder="Write here"
         ref={inputRef}
         onChange={handleChange}
-        //onKeyDown={handleClick}
-        //disabled={!isWordValid}
+        onKeyDown={handleKeyDown}
       />
-
-      {errorMessage && (<p>{errorMessage}<br/><br/></p>)}
 
       <button type="submit"
         id="button_phrase"

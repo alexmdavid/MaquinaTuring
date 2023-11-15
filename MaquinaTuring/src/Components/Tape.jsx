@@ -1,6 +1,10 @@
 import React, { forwardRef, useRef, useImperativeHandle, useEffect } from 'react';
 
-const Tape = forwardRef((props, ref) => {
+<<<<<<< HEA
+=======
+const Tape = forwardRef(({word}, ref) => {
+
+>>>>>>> 4b4d916c79c74313e280b846e8163138b2406d8e
     const tapeRef = useRef(null);
 
 // Utiliza useImperativeHandle para exponer específicamente la referencia que deseas

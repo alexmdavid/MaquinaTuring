@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-function Graph() {
+const Graph = ({word}) => {
   const canvasRef = useRef(null);
   const contentWidth = 1000; // Ancho del contenido dentro del canvas
   const contentHeight = 500; // Alto del contenido dentro del canvas
