@@ -41,25 +41,12 @@ const Input = forwardRef((props, ref)=> {
   }
 
 
-  //funciones de jesid
-
-
-
-
-
-  //fin jesid
-
   
 
-  // Función para manejar el envío del formulario
-  const handleSubmit = (event) => {
-    event.preventDefault(); // Evita el comportamiento predeterminado del formulario (recargar la página)
-    validateWord();
-  };
 
   return (
     <div className="box_phrase">
-      <form onSubmit={handleSubmit}>
+      <form>
         <label id="label_phrase" style={{ fontWeight: 'bold' }} htmlFor="input_phrase">
           Ingresa una palabra:
         </label>
