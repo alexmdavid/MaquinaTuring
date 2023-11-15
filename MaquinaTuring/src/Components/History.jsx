@@ -1,8 +1,8 @@
 function History() {
     return (
-        <div className="accepted_section">
-            <h2 id="accepted_word">Palabras Aceptadas</h2>
-            <textarea id="accepted_words" readOnly></textarea>
+        <div className="word_section">
+            <h2 id="word_label">Palabras Registradas</h2>
+            <textarea id="words_area" readOnly></textarea>
         </div>
     )
 }

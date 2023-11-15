@@ -12,19 +12,18 @@ function App() {
       <div className="Window">
         <h1 className="tittle">Maquina Turing</h1>
         <div className='WindowMain'>
-          <div className='WindowLeft'>
+          <div className='column WindowLeft'>
             <section className='posContent'>
-            <Settings />
-            <History />
+                <Settings />
+                <History />
             </section>
           </div>
-          <div className="WindowRigth">
+          <div className="column WindowRight">
             <Graph />
             <Input />
-            <Tape />
           </div>
-
         </div>
+        <Tape />
       </div>
     </>
   )

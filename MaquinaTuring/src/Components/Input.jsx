@@ -23,20 +23,20 @@ function Input() {
   };
 
   return (
-    <div className="box_regular_phrase">
+    <div className="box_phrase">
       <form onSubmit={handleSubmit}>
-        <label style={{ fontWeight: 'bold' }} htmlFor="input_regular_phrase">
+        <label id="label_phrase" style={{ fontWeight: 'bold' }} htmlFor="input_phrase">
           Ingresa una palabra:
         </label>
         <br />
         <input
           type="text"
-          id="input_regular_phrase"
+          id="input_phrase"
           placeholder="Write here"
           value={inputValue}
           onChange={handleInputChange}
         />
-        <button type="submit" id="button_regular_phrase">
+        <button type="submit" id="button_phrase">
           Verificar
         </button>
       </form>

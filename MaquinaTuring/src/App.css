@@ -17,14 +17,20 @@
 .WindowMain{
   display: flex;
   width: calc(100vw*0.9);
-  height: 100vh;
+  height: 70vh;
+  margin: 20px;
+  justify-content: center;
 }
 
+
+
 .WindowLeft{
+  width: 37%; /* Ocupa el 48% del ancho del contenedor principal */
   display: flex;
-  justify-content: center;
-  width: 50%;
-  height: 100vh;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: left;
+  align-content: flex-start;
   border: 1px solid wheat;
 }
 
@@ -33,7 +39,13 @@
   top: 20%;
 }
 
-.hero{
+.hero {
+  white-space: nowrap; /* Evita los saltos de línea */
+}
+
+.hero > * {
+  display: inline-block; /* Coloca los elementos en la misma línea */
+  margin-right: 10px; /* Añade un margen entre los elementos según tus preferencias */
 }
 
 /* Agregar estilos para el selector de idioma */
@@ -46,6 +58,11 @@
   border-color: green;
   background-color: #00ff1e81;
   color: #333;
+}
+
+#languageSelector option {
+  background-color: rgb(151, 236, 22);
+  color: rgb(48, 84, 48);
 }
 
 #input_run_time {
@@ -61,22 +78,115 @@
   overflow: hidden; 
 }
 
-
-#languageSelector option {
-  background-color: rgb(151, 236, 22);
-  color: rgb(48, 84, 48);
-}
-
-.accepted_section{
+.word_section{
   align-items: start;
   flex: 0 1 calc(47% - 10px); /* Ancho del 50% con espacio entre columnas */
   margin: 0px 15px; /* Margen opcional entre las columnas */
 }
 
-.WindowRigth{
-  width: 60%;
-  height: 100vh;
-  border: 1px solid green;
-
+#words_area {
+  width: 90%; /* Ancho completo de las áreas de texto */
+  height: 200px; /* Altura ajustada según tus necesidades */
+  font-size: 20;
+  resize: none;  
+  padding: 10px;
+  margin: 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  color: #333;
+  overflow-y: auto;
 }
+
+.WindowRight{
+  width: 60%;
+  height: 70vh;
+  border: 1px solid green;
+  border: 1px solid wheat;
+}
+
+#title_automaton {
+  font-size: 30px;
+  font-weight: bold;
+  margin-left: 0; /* Alinea el título a la izquierda */
+  margin-bottom: 20px;
+}
+
+/* Estilos del contenedor del gráfico de autómata */
+#box_automaton {
+  display: flex;
+  width: 90%; /* Ocupa todo el ancho disponible */
+  height: 40vh;
+  margin: 0 auto;
+  border: 6px double #878585;
+  background-color: #f0f0f0;
+  border-radius: 20px;
+}
+
+
+/* Estilos del cuadro de expresión regular */
+.box_phrase {
+  border-radius: 10px; /* Redondear los bordes */
+  padding: 20px;
+  background-color: inherit;
+}
+
+.label_phrase {
+  display: block;
+  width: 100%;
+  height: 185px;
+  border: none;
+  resize: none;
+  outline: none;
+  background: white;
+  color: black;
+}
+
+
+/* Estilos del cuadro de entrada de texto */
+#input_phrase {
+  cursor: pointer;
+  width: 70%;
+  padding: 10px;
+  margin-top:8px;
+  margin-bottom: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  color: black;
+}
+
+/* Estilos del botón de verificación */
+#button_phrase {
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #00ff1e77;
+  color: black;
+  font-size: 15px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#button_phrase:hover {
+  background-color: rgb(151, 236, 22);
+  color: rgb(48, 84, 48);
+  transform: scale(1.1);
+}
+
+#languageSelector,
+#input_run_time,
+#words_area,
+#box_automaton,
+#input_phrase,
+#button_phrase {
+  box-shadow: 0px 0px 20px rgba(200, 200, 200, 0.189);
+}
+
+
+
 
