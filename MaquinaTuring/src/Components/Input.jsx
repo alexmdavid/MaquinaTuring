@@ -1,6 +1,9 @@
 import React, { useRef, forwardRef, useEffect, useState } from 'react';
 
 const Input = forwardRef(({ updateWord }, ref) => {
+
+  const [lleno,setState] = useState(false);
+
   // Código del componente Input
 
   const inputRef = useRef(null)
@@ -41,10 +44,23 @@ const Input = forwardRef(({ updateWord }, ref) => {
     characterList.current = characters;
 
     if (ref.current) {
-      characterList.current.forEach(item => {
-        ref.current.agregarDiv(item);
-        console.log(item)
-      });
+      
+      if(!lleno){
+        characterList.current.forEach(item => {
+          ref.current.agregarDiv(item);
+          setState(true);
+          console.log(item)
+        });
+      }else{
+        console.log(lleno)
+        setState(false);
+        ref.current.deleteCells();
+        characterList.current.forEach(item => {
+          ref.current.agregarDiv(item);
+          setState(true);
+          console.log(item)
+        });
+      }
     }
 
     if (isWordValid) {

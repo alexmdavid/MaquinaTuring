@@ -20,6 +20,14 @@ const Tape = forwardRef(({ word }, ref) => {
                 }
               }
         },
+        deleteCells: () => {
+            const cells = tapeRef.current.querySelectorAll('.cells');
+        
+            // Itera sobre cada elemento y elimínalo
+            cells.forEach((cell) => {
+                cell.parentNode.removeChild(cell);
+            });
+        }        
     }));
 
     
@@ -38,9 +46,9 @@ const Tape = forwardRef(({ word }, ref) => {
                 <div className="cellsB"></div>
                 <div className="cellsB"></div>
                 <div className="cellsB"></div>
-                <div className="cellsB"></div>
-                <div className="cellsB"></div>
                 <div  id='centro'></div>
+                <div className="cellsB"></div>
+                <div className="cellsB"></div>
                 <div className="cellsB"></div>
                 <div className="cellsB"></div>
                 <div className="cellsB"></div>
