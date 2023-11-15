@@ -229,6 +229,35 @@
   overflow: hidden; /* Oculta la barra de desplazamiento */
 }
 
+@keyframes moverDerecha {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(500px);
+  }
+}
+
+@keyframes moverIzquierda {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-500px);
+  }
+}
+
+.mover-derecha {
+  animation: moverDerecha 5s ease;
+}
+
+.mover-izquierda {
+  animation: moverIzquierda 5s ease;
+}
+
+/* Otros estilos que puedas necesitar */
+
+
 .index{
   position: absolute;
   
