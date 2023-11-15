@@ -47,7 +47,7 @@ const Input = forwardRef(({ updateWord }, ref) => {
       
       if(!lleno){
         characterList.current.forEach(item => {
-          ref.current.agregarDiv(item);
+          ref.current.addCell(item);
           setState(true);
           console.log(item)
         });
@@ -56,7 +56,7 @@ const Input = forwardRef(({ updateWord }, ref) => {
         setState(false);
         ref.current.deleteCells();
         characterList.current.forEach(item => {
-          ref.current.agregarDiv(item);
+          ref.current.addCell(item);
           setState(true);
           console.log(item)
         });

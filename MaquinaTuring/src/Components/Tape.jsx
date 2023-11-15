@@ -7,7 +7,7 @@ const Tape = forwardRef(({ word }, ref) => {
 
     useImperativeHandle(ref, () => ({
         miInputRef: tapeRef,
-        agregarDiv: (contenido) => {
+        addCell: (contenido) => {
             const cellsChild = tapeRef.current.querySelector('#centro');
 
             if (cellsChild && cellsChild.parentNode) {
