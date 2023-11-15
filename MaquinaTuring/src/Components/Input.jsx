@@ -26,9 +26,9 @@ const Input = forwardRef((props, ref) => {
 
     // Mostrar alerta si se ingresó un caracter no permitido
     if (value.trim() === '') {
-      setErrorName('this field is required');
+      setErrorMessage('this field is required');
     } else if(!isWordValid) {
-      setErrorName('this word is not valid');
+      setErrorMessage('this word is not valid');
     } else {
       setErrorMessage('');
     }
@@ -44,6 +44,7 @@ const Input = forwardRef((props, ref) => {
 
     characterList.current.forEach(item => {
       ref.current.agregarDiv(item);
+      ref.current.moveRight();
     });
   }
 
