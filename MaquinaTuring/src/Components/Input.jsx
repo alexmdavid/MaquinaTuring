@@ -1,20 +1,55 @@
-import React, { useState } from 'react';
+import React, { useRef,forwardRef, useEffect,useState } from 'react';
 
-function Input() {
+const Input = forwardRef((props, ref)=> {
   const [inputValue, setInputValue] = useState('');
+  const inputRef = useRef(null)
+  const characterList = useRef([]);
 
-  // Función para manejar cambios en el input
-  const handleInputChange = (event) => {
-    setInputValue(event.target.value);
+
+  useEffect(() => {
+    // Accede a la referencia de la cinta (miInputRef) y realiza operaciones si es necesario
+    if (ref.current) {
+      console.log('Referencia de la cinta:', ref);
+      // Puedes realizar otras operaciones aquí
+    }
+  }, [ref]);
+
+  const handleChange = (event) => {
+    const newValue = event.target.value;
+
+    // Utilizar una expresión regular para aceptar solo 'a' y 'b'
+    const filteredValue = newValue.replace(/[^ab]/g, '');
+
+    // Mostrar alerta si se ingresó un caracter no permitido
+    if (newValue !== filteredValue) {
+      alert('Solo se permiten los caracteres "a" y "b".');
+    }
+
+    setInputValue(filteredValue);
   };
 
-  // Función para validar la palabra
-  const validateWord = () => {
-    // Aquí puedes realizar la lógica para validar la palabra ingresada
-    // Por ejemplo, imprimir la palabra en la consola por ahora
-    console.log('Palabra ingresada:', inputValue);
-    // También puedes añadir aquí la lógica necesaria para manejar la validación de la palabra
-  };
+  function handleClick(){
+    const inputValue = inputRef.current.value;
+
+    // Guardar cada caracter en el arreglo
+    const characters = inputValue.split('');
+    characterList.current = characters;
+
+    characterList.current.forEach(item => {
+      ref.current.agregarDiv(item);
+    });
+  }
+
+
+  //funciones de jesid
+
+
+
+
+
+  //fin jesid
+
+  
 
   // Función para manejar el envío del formulario
   const handleSubmit = (event) => {
@@ -33,15 +68,15 @@ function Input() {
           type="text"
           id="input_phrase"
           placeholder="Write here"
-          value={inputValue}
-          onChange={handleInputChange}
+          ref={inputRef}
+          onChange={handleChange}
         />
-        <button type="submit" id="button_phrase">
+        <button type="submit" id="button_phrase" onClick={handleClick} >
           Verificar
         </button>
       </form>
     </div>
   );
-}
+});
 
 export default Input;
